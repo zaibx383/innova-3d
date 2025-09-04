@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import image1 from "../assets/image_new.png";
+//import image1 from "../assets/image_new.png";
 import image2 from "../assets/image_new.png";
 import { PMREMGenerator } from 'three';
 
@@ -44,7 +44,7 @@ const ModelViewer: FC<ModelViewerProps> = ({ initialModelPath = '/assets/Without
   const groundPlaneRef = useRef<THREE.Mesh | null>(null);
   const clickStartTimeRef = useRef<number>(0);
   const clickedPositionRef = useRef<THREE.Vector2>(new THREE.Vector2());
-  const [currentVariant, setCurrentVariant] = useState<'with' | 'without'>('without');
+  const [_currentVariant, setCurrentVariant] = useState<'with' | 'without'>('without');
   
   const clickTimeoutRef = useRef<number | null>(null);
   // Add a new ref to track whether to enable hover checking
@@ -113,32 +113,32 @@ const ModelViewer: FC<ModelViewerProps> = ({ initialModelPath = '/assets/Without
   };
   
   // Add these cleanup helpers
-  const cleanupThreeJSResources = () => {
-    // Cancel animation frame
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    }
+  // const cleanupThreeJSResources = () => {
+  //   // Cancel animation frame
+  //   if (animationFrameRef.current !== null) {
+  //     cancelAnimationFrame(animationFrameRef.current);
+  //     animationFrameRef.current = null;
+  //   }
     
-    // Dispose controls
-    if (controlsRef.current) {
-      controlsRef.current.dispose();
-    }
+  //   // Dispose controls
+  //   if (controlsRef.current) {
+  //     controlsRef.current.dispose();
+  //   }
     
-    // Reset highlighting
-    resetHighlighting();
+  //   // Reset highlighting
+  //   resetHighlighting();
     
-    // Clear timeouts
-    if (clickTimeoutRef.current) {
-      clearTimeout(clickTimeoutRef.current);
-      clickTimeoutRef.current = null;
-    }
+  //   // Clear timeouts
+  //   if (clickTimeoutRef.current) {
+  //     clearTimeout(clickTimeoutRef.current);
+  //     clickTimeoutRef.current = null;
+  //   }
     
-    if (modelChangeTimeoutRef.current) {
-      clearTimeout(modelChangeTimeoutRef.current);
-      modelChangeTimeoutRef.current = null;
-    }
-  };
+  //   if (modelChangeTimeoutRef.current) {
+  //     clearTimeout(modelChangeTimeoutRef.current);
+  //     modelChangeTimeoutRef.current = null;
+  //   }
+  // };
   
   
   const isTargetMesh = (name: string): boolean => {

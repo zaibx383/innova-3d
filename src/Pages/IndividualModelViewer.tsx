@@ -175,7 +175,7 @@ const IndividualModelViewer: FC<IndividualModelViewerProps> = () => {
   };
 
   // Updated changeModel function with enhanced debouncing and error clearing
-  const changeModel = (modelPath: string, buttonId: string, newVariant: string) => {
+  const changeModel = (_modelPath: string, buttonId: string, newVariant: string) => {
     const now = Date.now();
     if (now - buttonClickTimeRef.current < 500) return;
     if (activeModelButton === buttonId) return;
